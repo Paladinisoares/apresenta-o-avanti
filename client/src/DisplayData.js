@@ -60,6 +60,7 @@ function DisplayData() {
   if (loading) {
     return <h1> DATA IS LOADING...</h1>;
   }
+  console.log(data, 'data')
 
   return (
     <div>
