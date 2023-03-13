@@ -34,7 +34,7 @@ function DisplayData() {
   const [createUser] = useMutation(CREATE_USER_MUTATION);
 
   if (loading) {
-    return <h1> DATA IS LOADING...</h1>;
+    return <h1> CARREGANDO...</h1>;
   }
 
   return (
@@ -79,7 +79,7 @@ function DisplayData() {
             refetch();
           }}
         >
-          Create User
+          Criar Usuário
         </button>
       </div>
       {data &&
