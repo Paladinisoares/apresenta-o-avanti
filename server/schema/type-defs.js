@@ -6,7 +6,7 @@ const typeDefs = gql`
     name: String!
     username: String!
     age: Int!
-    nationality: Nationality!
+    nationality: String!
     friends: [User]
     favoriteMovies: [Movie]
   }
@@ -29,7 +29,7 @@ const typeDefs = gql`
     name: String!
     username: String!
     age: Int!
-    nationality: Nationality = BRAZIL
+    nationality: String
   }
 
   input UpdateUsernameInput {
@@ -41,15 +41,6 @@ const typeDefs = gql`
     createUser(input: CreateUserInput!): User
     updateUsername(input: UpdateUsernameInput!): User
     deleteUser(id: ID!): User
-  }
-
-  enum Nationality {
-    CANADA
-    BRAZIL
-    INDIA
-    GERMANY
-    CHILE
-    UKRAINE
   }
 `;
 

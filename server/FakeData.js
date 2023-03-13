@@ -11,7 +11,7 @@ const UserList = [
         name: "Pedro",
         username: "PedroTech",
         age: 20,
-        nationality: "BRAZIL",
+        nationality: "BRASIL",
       },
       {
         id: 5,
@@ -27,7 +27,7 @@ const UserList = [
     name: "Pedro",
     username: "PedroTech",
     age: 20,
-    nationality: "BRAZIL",
+    nationality: "BRASIL",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const UserList = [
         name: "Pedro",
         username: "PedroTech",
         age: 20,
-        nationality: "BRAZIL",
+        nationality: "BRASIL",
       },
     ],
   },
@@ -50,7 +50,7 @@ const UserList = [
     name: "Rafe",
     username: "rafe123",
     age: 60,
-    nationality: "GERMANY",
+    nationality: "ALEMANHA",
   },
   {
     id: 5,
@@ -64,25 +64,25 @@ const UserList = [
 const MovieList = [
   {
     id: 1,
-    name: "Avengers Endgame",
+    name: "Vingadores",
     yearOfPublication: 2019,
     isInTheaters: true,
   },
   {
     id: 2,
-    name: "Interstellar",
+    name: "Interestrelar",
     yearOfPublication: 2007,
     isInTheaters: true,
   },
   {
     id: 3,
-    name: "Superbad",
+    name: "Gente Grande",
     yearOfPublication: 2009,
     isInTheaters: true,
   },
   {
     id: 4,
-    name: "PedroTech The Movie",
+    name: "Pedro o filme",
     yearOfPublication: 2035,
     isInTheaters: false,
   },

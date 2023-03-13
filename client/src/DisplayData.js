@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery, useLazyQuery, gql, useMutation } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
 
 const QUERY_ALL_USERS = gql`
   query GetAllUsers {
@@ -9,23 +9,6 @@ const QUERY_ALL_USERS = gql`
       age
       username
       nationality
-    }
-  }
-`;
-
-const QUERY_ALL_MOVIES = gql`
-  query GetAllMovies {
-    movies {
-      name
-    }
-  }
-`;
-
-const GET_MOVIE_BY_NAME = gql`
-  query Movie($name: String!) {
-    movie(name: $name) {
-      name
-      yearOfPublication
     }
   }
 `;
@@ -40,34 +23,26 @@ const CREATE_USER_MUTATION = gql`
 `;
 
 function DisplayData() {
-  const [movieSearched, setMovieSearched] = useState("");
 
-  // Create User States
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [age, setAge] = useState(0);
   const [nationality, setNationality] = useState("");
 
   const { data, loading, refetch } = useQuery(QUERY_ALL_USERS);
-  const { data: movieData } = useQuery(QUERY_ALL_MOVIES);
-  const [
-    fetchMovie,
-    { data: movieSearchedData, error: movieError },
-  ] = useLazyQuery(GET_MOVIE_BY_NAME);
 
   const [createUser] = useMutation(CREATE_USER_MUTATION);
 
   if (loading) {
     return <h1> DATA IS LOADING...</h1>;
   }
-  console.log(data, 'data')
 
   return (
     <div>
       <div>
         <input
           type="text"
-          placeholder="Name..."
+          placeholder="Nome..."
           onChange={(event) => {
             setName(event.target.value);
           }}
@@ -81,14 +56,14 @@ function DisplayData() {
         />
         <input
           type="number"
-          placeholder="Age..."
+          placeholder="Idade..."
           onChange={(event) => {
             setAge(event.target.value);
           }}
         />
         <input
           type="text"
-          placeholder="Nationality..."
+          placeholder="Nacionalidade..."
           onChange={(event) => {
             setNationality(event.target.value.toUpperCase());
           }}
@@ -118,43 +93,6 @@ function DisplayData() {
             </div>
           );
         })}
-
-      {movieData &&
-        movieData.movies.map((movie) => {
-          return <h1>Movie Name: {movie.name}</h1>;
-        })}
-
-      <div>
-        <input
-          type="text"
-          placeholder="Interstellar..."
-          onChange={(event) => {
-            setMovieSearched(event.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            fetchMovie({
-              variables: {
-                name: movieSearched,
-              },
-            });
-          }}
-        >
-          Fetch Data
-        </button>
-        <div>
-          {movieSearchedData && (
-            <div>
-              <h1>MovieName: {movieSearchedData.movie.name}</h1>
-              <h1>
-                Year Of Publication: {movieSearchedData.movie.yearOfPublication}
-              </h1>{" "}
-            </div>
-          )}
-          {movieError && <h1> There was an error fetching the data</h1>}
-        </div>
-      </div>
     </div>
   );
 }
